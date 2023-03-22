@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+<form action="passwordvalidation.html">
+  <h2>Choose your Username</h2><br>
+    <h5 style="color: gray;">Used for sign in to all our games</h5>
+  </br>
+  <input type="text" id="input-field">
+  <button id="submit-button" disabled>Submit</button>
+  <div id="error" style="display: none;">Only letters and numbers allowed.</div>
+</form>
+<script>
+  const errorElement = document.getElementById("error");
+  const inputField = document.getElementById("input-field");
+  const submitButton = document.getElementById("submit-button");
+
+  inputField.addEventListener("input", () => {
+    const pattern = /^[a-zA-Z0-9]*$/;
+    if(inputField.value === ""){
+      submitButton.disabled = true;
+    }else if(inputField.value.length < 4){
+      submitButton.disabled = true;
+    }else if (!pattern.test(inputField.value)) {
+      submitButton.disabled = true;
+      errorElement.style.display = "block";
+    } else {
+      submitButton.disabled = false;
+      errorElement.style.display = "none";
+    }
+  });
+</script>
+</script>
+</body>
+</html>

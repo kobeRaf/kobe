@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>date</title>
+</head>
+<body>
+	<form action="usernameinput.html">
+          <!-- HTML code -->
+          <div>
+          	<h2>When were you born?</h2>
+          	<h5 style="color: gray;">Let's find out how old are you?</h5>
+          </div>
+          <p id="dob-error" style="display: none;">Please enter a valid date of birth (You must enter a Valid date).</p>
+          <input type="date" id="dob">
+          <button id="submit" disabled>Submit</button>
+	</form>
+
+    <script>
+       const dobInput = document.getElementById("dob");
+       const dobError = document.getElementById("dob-error");
+       const submitButton = document.getElementById("submit");
+       const button = document.getElementById("submit");
+       
+       dobInput.addEventListener("input", function() {
+       const dob = new Date(dobInput.value);
+       const now = new Date();
+       const minAge = new Date(now.getFullYear() - 10, now.getMonth(), now.getDate());
+       const maxAge = new Date(now.getFullYear() - 80, now.getMonth(), now.getDate());
+       
+     
+         if(dobInput.value === ""){
+             button.disabled = true;
+             
+
+               
+         }else if (dob > minAge || dob < maxAge) {
+                dobError.style.display = "block";
+                
+                button.disabled = true;
+       
+
+         }else{
+              dobError.style.display = "none";
+             
+              button.disabled = false;
+         
+       }
+     });
+
+    </script>
+
+</body>
+</html>
